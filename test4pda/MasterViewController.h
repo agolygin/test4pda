@@ -11,7 +11,7 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate, NSXMLParserDelegate>
+@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 

@@ -8,17 +8,15 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "Article.h"
+#import "afnetworking/AFNetworking.h"
+#import "TFHpple.h"
 
 @interface MasterViewController (){
 
-    NSXMLParser *parser;
     NSMutableArray *feeds;
-    NSMutableDictionary *item;
-    NSMutableString *title;
-    NSMutableString *link;
-    NSString *element;
-    
 }
+
 @end
 
 @implementation MasterViewController
@@ -26,19 +24,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    feeds = [[NSMutableArray alloc] init];
-    NSURL *url = [NSURL URLWithString:@"http://4pda.ru/feed/rss"];
-    parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    
-    [parser setDelegate:self];
-    [parser setShouldResolveExternalEntities:NO];
-    [parser parse];
-    
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+    [manager setResponseSerializer:[AFHTTPResponseSerializer serializer]];
+    
+    [manager GET:@"http://4pda.ru/news" parameters:NULL progress:NULL success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        TFHpple *newsParser = [TFHpple hppleWithHTMLData:(NSData *)responseObject];
+        NSArray *nodes = [newsParser searchWithXPathQuery:@"//article[@class='post']"];
+        
+        feeds = [[NSMutableArray alloc] initWithCapacity:[nodes count]];
+        for(TFHppleElement *elem in nodes)
+        {
+            Article *a = [[Article alloc] initWithTFHppleElement:elem];
+            [feeds addObject:a];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self.tableView reloadData];
+        });
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"An error occured in '%@': error[%ld] %@",
+              NSStringFromSelector(_cmd), (long)error.code, error.localizedDescription);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,10 +84,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSString *string = [feeds[indexPath.row] objectForKey: @"link"];
+        Article *a = [feeds objectAtIndex:indexPath.row];
         UINavigationController *nav = [segue destinationViewController];
-        DetailViewController *det = [nav topViewController];
-        [det setUrl:string];
+        DetailViewController *det = (DetailViewController *)[nav topViewController];
+        [det setUrl:a.url];
         
 //        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 //        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
@@ -103,8 +112,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
+    Article *a = [feeds objectAtIndex:indexPath.row];
+    cell.textLabel.text = a.title;
     return cell;
+    
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 //    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 //    [self configureCell:cell withObject:object];
@@ -133,51 +144,6 @@
 
 - (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object {
     cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
-}
-
-#pragma mark - XML parser
-
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-    
-    element = elementName;
-    
-    if ([element isEqualToString:@"item"]) {
-        
-        item    = [[NSMutableDictionary alloc] init];
-        title   = [[NSMutableString alloc] init];
-        link    = [[NSMutableString alloc] init];
-        
-    }
-    
-}
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    
-    if ([element isEqualToString:@"title"]) {
-        [title appendString:string];
-    } else if ([element isEqualToString:@"link"]) {
-        [link appendString:string];
-    }
-    
-}
-
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    
-    if ([elementName isEqualToString:@"item"]) {
-        
-        [item setObject:title forKey:@"title"];
-        [item setObject:link forKey:@"link"];
-        
-        [feeds addObject:[item copy]];
-        
-    }
-    
-}
-
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-    
-    [self.tableView reloadData];
-    
 }
 
 #pragma mark - Fetched results controller
