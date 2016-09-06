@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @interface DetailViewController : UIViewController
 
+@property (copy, nonatomic) NSString *url;
+@property (strong, nonatomic) WKWebView *webView;
 @property (strong, nonatomic) id detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end
 

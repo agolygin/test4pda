@@ -9,8 +9,16 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController (){
 
+    NSXMLParser *parser;
+    NSMutableArray *feeds;
+    NSMutableDictionary *item;
+    NSMutableString *title;
+    NSMutableString *link;
+    NSString *element;
+    
+}
 @end
 
 @implementation MasterViewController
@@ -20,6 +28,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
+    feeds = [[NSMutableArray alloc] init];
+    NSURL *url = [NSURL URLWithString:@"http://4pda.ru/feed/rss"];
+    parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    
+    [parser setDelegate:self];
+    [parser setShouldResolveExternalEntities:NO];
+    [parser parse];
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
@@ -59,30 +75,40 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        [controller setDetailItem:object];
-        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        controller.navigationItem.leftItemsSupplementBackButton = YES;
+        NSString *string = [feeds[indexPath.row] objectForKey: @"link"];
+        UINavigationController *nav = [segue destinationViewController];
+        DetailViewController *det = [nav topViewController];
+        [det setUrl:string];
+        
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+//        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+//        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+//        [controller setDetailItem:object];
+//        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+//        controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
 }
 
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    return feeds.count;
+//    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+//    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    [self configureCell:cell withObject:object];
+    cell.textLabel.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
     return cell;
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+//    [self configureCell:cell withObject:object];
+//    return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -107,6 +133,51 @@
 
 - (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object {
     cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+}
+
+#pragma mark - XML parser
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    
+    element = elementName;
+    
+    if ([element isEqualToString:@"item"]) {
+        
+        item    = [[NSMutableDictionary alloc] init];
+        title   = [[NSMutableString alloc] init];
+        link    = [[NSMutableString alloc] init];
+        
+    }
+    
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    
+    if ([element isEqualToString:@"title"]) {
+        [title appendString:string];
+    } else if ([element isEqualToString:@"link"]) {
+        [link appendString:string];
+    }
+    
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    
+    if ([elementName isEqualToString:@"item"]) {
+        
+        [item setObject:title forKey:@"title"];
+        [item setObject:link forKey:@"link"];
+        
+        [feeds addObject:[item copy]];
+        
+    }
+    
+}
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
+    
+    [self.tableView reloadData];
+    
 }
 
 #pragma mark - Fetched results controller

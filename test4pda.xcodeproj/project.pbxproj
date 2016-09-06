@@ -15,6 +15,11 @@
 		1928F3F51D7E2B9D0084A12D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1928F3F31D7E2B9D0084A12D /* Main.storyboard */; };
 		1928F3F71D7E2B9D0084A12D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1928F3F61D7E2B9D0084A12D /* Assets.xcassets */; };
 		1928F3FA1D7E2B9D0084A12D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1928F3F81D7E2B9D0084A12D /* LaunchScreen.storyboard */; };
+		1928F4041D7EDBBF0084A12D /* UIView+Constraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4031D7EDBBF0084A12D /* UIView+Constraints.m */; };
+		1928F40C1D7F02940084A12D /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4071D7F02940084A12D /* TFHpple.m */; };
+		1928F40D1D7F02940084A12D /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4091D7F02940084A12D /* TFHppleElement.m */; };
+		1928F40E1D7F02940084A12D /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F40B1D7F02940084A12D /* XPathQuery.m */; };
+		1928F4101D7F034A0084A12D /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1928F40F1D7F03490084A12D /* libxml2.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,15 @@
 		1928F3F61D7E2B9D0084A12D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1928F3F91D7E2B9D0084A12D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1928F3FB1D7E2B9D0084A12D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1928F4021D7EDBBF0084A12D /* UIView+Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Constraints.h"; sourceTree = "<group>"; };
+		1928F4031D7EDBBF0084A12D /* UIView+Constraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Constraints.m"; sourceTree = "<group>"; };
+		1928F4061D7F02940084A12D /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		1928F4071D7F02940084A12D /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		1928F4081D7F02940084A12D /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		1928F4091D7F02940084A12D /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		1928F40A1D7F02940084A12D /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		1928F40B1D7F02940084A12D /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		1928F40F1D7F03490084A12D /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1928F4101D7F034A0084A12D /* libxml2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +62,7 @@
 		1928F3D81D7E2B9C0084A12D = {
 			isa = PBXGroup;
 			children = (
+				1928F40F1D7F03490084A12D /* libxml2.tbd */,
 				1928F3E31D7E2B9C0084A12D /* test4pda */,
 				1928F3E21D7E2B9C0084A12D /* Products */,
 			);
@@ -63,12 +79,15 @@
 		1928F3E31D7E2B9C0084A12D /* test4pda */ = {
 			isa = PBXGroup;
 			children = (
+				1928F4051D7F02940084A12D /* hpple */,
 				1928F3E71D7E2B9C0084A12D /* AppDelegate.h */,
 				1928F3E81D7E2B9C0084A12D /* AppDelegate.m */,
 				1928F3ED1D7E2B9C0084A12D /* MasterViewController.h */,
 				1928F3EE1D7E2B9C0084A12D /* MasterViewController.m */,
 				1928F3F01D7E2B9C0084A12D /* DetailViewController.h */,
 				1928F3F11D7E2B9C0084A12D /* DetailViewController.m */,
+				1928F4021D7EDBBF0084A12D /* UIView+Constraints.h */,
+				1928F4031D7EDBBF0084A12D /* UIView+Constraints.m */,
 				1928F3F31D7E2B9D0084A12D /* Main.storyboard */,
 				1928F3F61D7E2B9D0084A12D /* Assets.xcassets */,
 				1928F3F81D7E2B9D0084A12D /* LaunchScreen.storyboard */,
@@ -85,6 +104,19 @@
 				1928F3E51D7E2B9C0084A12D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1928F4051D7F02940084A12D /* hpple */ = {
+			isa = PBXGroup;
+			children = (
+				1928F4061D7F02940084A12D /* TFHpple.h */,
+				1928F4071D7F02940084A12D /* TFHpple.m */,
+				1928F4081D7F02940084A12D /* TFHppleElement.h */,
+				1928F4091D7F02940084A12D /* TFHppleElement.m */,
+				1928F40A1D7F02940084A12D /* XPathQuery.h */,
+				1928F40B1D7F02940084A12D /* XPathQuery.m */,
+			);
+			path = hpple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,9 +189,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1928F40D1D7F02940084A12D /* TFHppleElement.m in Sources */,
 				1928F3F21D7E2B9C0084A12D /* DetailViewController.m in Sources */,
 				1928F3EF1D7E2B9C0084A12D /* MasterViewController.m in Sources */,
 				1928F3EC1D7E2B9C0084A12D /* test4pda.xcdatamodeld in Sources */,
+				1928F40E1D7F02940084A12D /* XPathQuery.m in Sources */,
+				1928F40C1D7F02940084A12D /* TFHpple.m in Sources */,
+				1928F4041D7EDBBF0084A12D /* UIView+Constraints.m in Sources */,
 				1928F3E91D7E2B9C0084A12D /* AppDelegate.m in Sources */,
 				1928F3E61D7E2B9C0084A12D /* main.m in Sources */,
 			);
@@ -275,6 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = test4pda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agolygin.test4pda;
@@ -286,6 +323,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = test4pda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agolygin.test4pda;
