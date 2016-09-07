@@ -27,6 +27,15 @@
 		1928F4231D7F366D0084A12D /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F41C1D7F366D0084A12D /* AFURLResponseSerialization.m */; };
 		1928F4241D7F366D0084A12D /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F41E1D7F366D0084A12D /* AFURLSessionManager.m */; };
 		1928F4281D7F7BA70084A12D /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4271D7F7BA70084A12D /* Article.m */; };
+		1928F42B1D7FBDE50084A12D /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F42A1D7FBDE50084A12D /* CustomTableViewCell.m */; };
+		1928F43E1D7FCBA90084A12D /* HNKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F42F1D7FCBA90084A12D /* HNKCache.m */; };
+		1928F43F1D7FCBA90084A12D /* HNKDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4311D7FCBA90084A12D /* HNKDiskCache.m */; };
+		1928F4401D7FCBA90084A12D /* HNKDiskFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4331D7FCBA90084A12D /* HNKDiskFetcher.m */; };
+		1928F4411D7FCBA90084A12D /* HNKNetworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4351D7FCBA90084A12D /* HNKNetworkFetcher.m */; };
+		1928F4421D7FCBA90084A12D /* HNKSimpleFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4371D7FCBA90084A12D /* HNKSimpleFetcher.m */; };
+		1928F4431D7FCBA90084A12D /* UIButton+Haneke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F4391D7FCBA90084A12D /* UIButton+Haneke.m */; };
+		1928F4441D7FCBA90084A12D /* UIImageView+Haneke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F43B1D7FCBA90084A12D /* UIImageView+Haneke.m */; };
+		1928F4451D7FCBA90084A12D /* UIView+Haneke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928F43D1D7FCBA90084A12D /* UIView+Haneke.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +76,25 @@
 		1928F41E1D7F366D0084A12D /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		1928F4261D7F7BA70084A12D /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		1928F4271D7F7BA70084A12D /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
+		1928F4291D7FBDE50084A12D /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		1928F42A1D7FBDE50084A12D /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		1928F42D1D7FCBA90084A12D /* Haneke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haneke.h; sourceTree = "<group>"; };
+		1928F42E1D7FCBA90084A12D /* HNKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNKCache.h; sourceTree = "<group>"; };
+		1928F42F1D7FCBA90084A12D /* HNKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNKCache.m; sourceTree = "<group>"; };
+		1928F4301D7FCBA90084A12D /* HNKDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNKDiskCache.h; sourceTree = "<group>"; };
+		1928F4311D7FCBA90084A12D /* HNKDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNKDiskCache.m; sourceTree = "<group>"; };
+		1928F4321D7FCBA90084A12D /* HNKDiskFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNKDiskFetcher.h; sourceTree = "<group>"; };
+		1928F4331D7FCBA90084A12D /* HNKDiskFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNKDiskFetcher.m; sourceTree = "<group>"; };
+		1928F4341D7FCBA90084A12D /* HNKNetworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNKNetworkFetcher.h; sourceTree = "<group>"; };
+		1928F4351D7FCBA90084A12D /* HNKNetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNKNetworkFetcher.m; sourceTree = "<group>"; };
+		1928F4361D7FCBA90084A12D /* HNKSimpleFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNKSimpleFetcher.h; sourceTree = "<group>"; };
+		1928F4371D7FCBA90084A12D /* HNKSimpleFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNKSimpleFetcher.m; sourceTree = "<group>"; };
+		1928F4381D7FCBA90084A12D /* UIButton+Haneke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Haneke.h"; sourceTree = "<group>"; };
+		1928F4391D7FCBA90084A12D /* UIButton+Haneke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Haneke.m"; sourceTree = "<group>"; };
+		1928F43A1D7FCBA90084A12D /* UIImageView+Haneke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Haneke.h"; sourceTree = "<group>"; };
+		1928F43B1D7FCBA90084A12D /* UIImageView+Haneke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Haneke.m"; sourceTree = "<group>"; };
+		1928F43C1D7FCBA90084A12D /* UIView+Haneke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Haneke.h"; sourceTree = "<group>"; };
+		1928F43D1D7FCBA90084A12D /* UIView+Haneke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Haneke.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				1928F4111D7F366D0084A12D /* afnetworking */,
+				1928F42C1D7FCBA90084A12D /* haneke */,
 				1928F4051D7F02940084A12D /* hpple */,
 				1928F4251D7F7B850084A12D /* model */,
 				1928F3E71D7E2B9C0084A12D /* AppDelegate.h */,
@@ -110,6 +139,8 @@
 				1928F3EE1D7E2B9C0084A12D /* MasterViewController.m */,
 				1928F3F01D7E2B9C0084A12D /* DetailViewController.h */,
 				1928F3F11D7E2B9C0084A12D /* DetailViewController.m */,
+				1928F4291D7FBDE50084A12D /* CustomTableViewCell.h */,
+				1928F42A1D7FBDE50084A12D /* CustomTableViewCell.m */,
 				1928F4021D7EDBBF0084A12D /* UIView+Constraints.h */,
 				1928F4031D7EDBBF0084A12D /* UIView+Constraints.m */,
 				1928F3F31D7E2B9D0084A12D /* Main.storyboard */,
@@ -170,6 +201,30 @@
 				1928F4271D7F7BA70084A12D /* Article.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		1928F42C1D7FCBA90084A12D /* haneke */ = {
+			isa = PBXGroup;
+			children = (
+				1928F42D1D7FCBA90084A12D /* Haneke.h */,
+				1928F42E1D7FCBA90084A12D /* HNKCache.h */,
+				1928F42F1D7FCBA90084A12D /* HNKCache.m */,
+				1928F4301D7FCBA90084A12D /* HNKDiskCache.h */,
+				1928F4311D7FCBA90084A12D /* HNKDiskCache.m */,
+				1928F4321D7FCBA90084A12D /* HNKDiskFetcher.h */,
+				1928F4331D7FCBA90084A12D /* HNKDiskFetcher.m */,
+				1928F4341D7FCBA90084A12D /* HNKNetworkFetcher.h */,
+				1928F4351D7FCBA90084A12D /* HNKNetworkFetcher.m */,
+				1928F4361D7FCBA90084A12D /* HNKSimpleFetcher.h */,
+				1928F4371D7FCBA90084A12D /* HNKSimpleFetcher.m */,
+				1928F4381D7FCBA90084A12D /* UIButton+Haneke.h */,
+				1928F4391D7FCBA90084A12D /* UIButton+Haneke.m */,
+				1928F43A1D7FCBA90084A12D /* UIImageView+Haneke.h */,
+				1928F43B1D7FCBA90084A12D /* UIImageView+Haneke.m */,
+				1928F43C1D7FCBA90084A12D /* UIView+Haneke.h */,
+				1928F43D1D7FCBA90084A12D /* UIView+Haneke.m */,
+			);
+			path = haneke;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,15 +297,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1928F42B1D7FBDE50084A12D /* CustomTableViewCell.m in Sources */,
 				1928F4241D7F366D0084A12D /* AFURLSessionManager.m in Sources */,
+				1928F4441D7FCBA90084A12D /* UIImageView+Haneke.m in Sources */,
+				1928F4451D7FCBA90084A12D /* UIView+Haneke.m in Sources */,
 				1928F40D1D7F02940084A12D /* TFHppleElement.m in Sources */,
 				1928F3F21D7E2B9C0084A12D /* DetailViewController.m in Sources */,
 				1928F3EF1D7E2B9C0084A12D /* MasterViewController.m in Sources */,
 				1928F3EC1D7E2B9C0084A12D /* test4pda.xcdatamodeld in Sources */,
 				1928F4211D7F366D0084A12D /* AFSecurityPolicy.m in Sources */,
 				1928F40E1D7F02940084A12D /* XPathQuery.m in Sources */,
+				1928F4411D7FCBA90084A12D /* HNKNetworkFetcher.m in Sources */,
+				1928F43F1D7FCBA90084A12D /* HNKDiskCache.m in Sources */,
 				1928F4221D7F366D0084A12D /* AFURLRequestSerialization.m in Sources */,
+				1928F4431D7FCBA90084A12D /* UIButton+Haneke.m in Sources */,
 				1928F4281D7F7BA70084A12D /* Article.m in Sources */,
+				1928F43E1D7FCBA90084A12D /* HNKCache.m in Sources */,
+				1928F4401D7FCBA90084A12D /* HNKDiskFetcher.m in Sources */,
 				1928F40C1D7F02940084A12D /* TFHpple.m in Sources */,
 				1928F4041D7EDBBF0084A12D /* UIView+Constraints.m in Sources */,
 				1928F41F1D7F366D0084A12D /* AFHTTPSessionManager.m in Sources */,
@@ -258,6 +321,7 @@
 				1928F4201D7F366D0084A12D /* AFNetworkReachabilityManager.m in Sources */,
 				1928F4231D7F366D0084A12D /* AFURLResponseSerialization.m in Sources */,
 				1928F3E61D7E2B9C0084A12D /* main.m in Sources */,
+				1928F4421D7FCBA90084A12D /* HNKSimpleFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
